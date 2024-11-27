@@ -1,4 +1,13 @@
 n, g, y, r = map(int, input().split())
-template = 'G'*g + 'Y'*y + 'R'*r + 'Y'*y + 'G'*g
-ind_tpm = (n-1)%len(template)
-print(template[ind_tpm])
+
+ind_tpm = n%(2*g + 2*y + r)
+if 1<= ind_tpm <= g:
+    print('G')
+elif g < ind_tpm <= (g+y):
+    print('Y')
+elif (g+y) < ind_tpm <= (g+y+r):
+    print('R')
+elif (g+y+r) < ind_tpm <= (g + 2*y + r):
+    print('Y')
+else:
+    print('G')

@@ -43,8 +43,9 @@ class SegTree:
         if l_seg >= left and r_seg <= right:
             return self.s_tree[node]
         mid = (l_seg + r_seg)//2
-        print(mid)
-        return self.__sum(left, right, 2*node+1, l_seg, mid) + self.__sum(left, right, 2*node+2, mid, r_seg)
+        sum_ = self.__sum(left, right, 2*node+1, l_seg, mid) + self.__sum(left, right, 2*node+2, mid, r_seg)
+
+        return sum_
 
     def get_seg_tree(self):
         return self.s_tree
@@ -57,4 +58,4 @@ seg_tree = SegTree(numbers)
 print(seg_tree.get_seg_tree())
 #seg_tree.update(4, 1)
 #print(seg_tree.get_seg_tree())
-print(seg_tree.sum(1, 6))
+print(seg_tree.sum(1, len(numbers)))

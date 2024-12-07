@@ -15,10 +15,10 @@ class SegTree:
         if left == right-1:
             self.s_tree[start] = self.arr[left]
         else:
-            mid = (left+right)//2
-            self.__bild_tree(start*2+1, left, mid)
-            self.__bild_tree(start*2+2, mid, right)
-            self.s_tree[start] = self.s_tree[start*2 + 1]+ self.s_tree[start*2+2]
+            mid = (left+right)>>1
+            self.__bild_tree((start<<1)+1, left, mid)
+            self.__bild_tree((start<<1)+2, mid, right)
+            self.s_tree[start] = self.s_tree[(start<<1) + 1]+ self.s_tree[(start<<1)+2]
 
     def update(self, ind, val):
         self.__update(ind, val, 0, 0, self.n)
@@ -27,12 +27,12 @@ class SegTree:
         if left == right -1:
             self.s_tree[node] = val
             return
-        mid = (left + right)//2
+        mid = (left + right)>>1
         if ind < mid:
-            self.__update(ind, val, 2*node+1, left, mid)
+            self.__update(ind, val, (node<<1) +1, left, mid)
         else:
-            self.__update(ind, val, 2*node+2, mid, right)
-        self.s_tree[node] = self.s_tree[2*node+1] + self.s_tree[2*node+2]
+            self.__update(ind, val, (node<<1)+2, mid, right)
+        self.s_tree[node] = self.s_tree[(node<<1)+1] + self.s_tree[(node<<1)+2]
 
     def sum(self, left, right):
         return self.__sum(left, right, 0, 0, self.n)
@@ -42,8 +42,8 @@ class SegTree:
             return 0
         if l_seg >= left and r_seg <= right:
             return self.s_tree[node]
-        mid = (l_seg + r_seg)//2
-        sum_ = self.__sum(left, right, 2*node+1, l_seg, mid) + self.__sum(left, right, 2*node+2, mid, r_seg)
+        mid = (l_seg + r_seg)>>1
+        sum_ = self.__sum(left, right, (node<<1)+1, l_seg, mid) + self.__sum(left, right, (node<<1), mid, r_seg)
 
         return sum_
 
@@ -53,11 +53,11 @@ class SegTree:
     def __get_index(self, val, node, l_seg, r_seg):
         if l_seg == r_seg - 1:
             return l_seg
-        mid = (l_seg + r_seg) // 2
-        if self.s_tree[node*2 + 1] >= val:
-            return self.__get_index(val, node*2 + 1, l_seg, mid)
+        mid = (l_seg + r_seg) >> 1
+        if self.s_tree[(node<<1) + 1] >= val:
+            return self.__get_index(val, (node<<1) + 1, l_seg, mid)
         else:
-            return self.__get_index(val - self.s_tree[node*2 + 1], node*2 + 2, mid, r_seg)
+            return self.__get_index(val - self.s_tree[(node<<1) + 1], (node<<1) + 2, mid, r_seg)
 
     def get_seg_tree(self):
         return self.s_tree

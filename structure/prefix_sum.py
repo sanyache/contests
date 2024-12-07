@@ -1,5 +1,6 @@
 l, r = map(int, input().split())
-numbers= [int(x) for x in input().split()]
+numbers= [int(x) for x in input()]
+print(numbers)
 n = len(numbers)
 prefix_sum = [ 0 for i in range(n+1)]
 for i in range(1, n+1):

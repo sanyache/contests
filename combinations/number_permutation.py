@@ -1,3 +1,5 @@
+import math
+
 def number_permutation(n, l, prefix='', used=None):
     used = used or [False]*(n+1)
     if l == 0:
@@ -13,3 +15,5 @@ def number_permutation(n, l, prefix='', used=None):
 
 number, length = map(int, input().split())
 number_permutation(number, length)
+permutations = math.perm(number, length)
+print(permutations)

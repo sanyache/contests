@@ -1,5 +1,7 @@
 from math import factorial
 
+# for i in range(ord('a'), ord('z')+1):
+#     print(chr(i), end=' ')
 
 def find_word_by_index_optimized(n, k):
     letters = [chr(i) for i in range(97, 97 + n)]  # Перші N латинських літер

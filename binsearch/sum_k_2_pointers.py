@@ -8,9 +8,16 @@ Output:
 """
 k = int(input())
 numbers = [int(x) for x in input().split()]
-set_num = {x for x in numbers}
-for number in numbers:
-    if k-number in set_num:
-        print(number, k-number)
+l = 0
+r = len(numbers) -1
+while r > l:
+    s = numbers[l] + numbers[r]
+    if s == k:
+        print(numbers[l], numbers[r])
         exit()
-print('No solution')
+    if s > k:
+        r -= 1
+    else:
+        l += 1
+print("No solution")
+

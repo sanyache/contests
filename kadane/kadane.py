@@ -6,7 +6,7 @@
 """
 numbers = [int(x) for x in input().split()]
 n = len(numbers)
-best = 0
+best = numbers[0]
 curr_sum = 0
 for i in range(n):
     curr_sum = max(curr_sum+numbers[i], numbers[i])

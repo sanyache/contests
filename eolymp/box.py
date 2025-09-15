@@ -8,3 +8,4 @@ for ball in balls:
         break
     counter += 1
 print(counter)
+# eolymp 10923

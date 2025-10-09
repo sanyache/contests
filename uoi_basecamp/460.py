@@ -1,0 +1,5 @@
+n = int(input())
+m = int(input())
+k = int(input())
+ans = (n//k) * (m//k)
+print(ans)

@@ -30,3 +30,4 @@ digits = Counter(row)
 
 number_permutation(digits, 3)
 print(cnt)
+

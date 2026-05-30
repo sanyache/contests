@@ -17,9 +17,11 @@ def len_sub(nums):
         else:
             ind = left_boundary(sub, nums[i])
             sub[ind] = nums[i]
+        print(sub)
     return len(sub)
 
-nums = [10,9,2,5,3,7,101,18]
+nums =[4,10,4,3,8,9]
+   # [10,9,2,5,3,7,101,18]
 print(len_sub(nums))
 
 """

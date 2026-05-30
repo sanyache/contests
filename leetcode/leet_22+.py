@@ -3,7 +3,6 @@ def bin_gen(l, left, right, prefix):
     if left > n or left < right:
         return
     if l == 0:
-        cnt = 0
         rez.append(prefix)
     else:
         bin_gen(l-1, left+1, right, prefix + '(')

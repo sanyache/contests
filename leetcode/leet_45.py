@@ -11,6 +11,7 @@ def jump(nums) -> int:
         if i == current_end:
             cnt += 1
             current_end = max_jump
+            print(i)
 
     return cnt
 

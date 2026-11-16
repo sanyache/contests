@@ -17,7 +17,9 @@ def main():
         pref[i] = gcd(pref[i-1], delta[i])
     for i in range(n-1, 0, -1):
         suf[i] = gcd(suf[i+1], delta[i])
-
+    print(delta)
+    print(pref)
+    print(suf)
     for l in range(n-k+1):
         r = l + k -1
         if l < 1:
